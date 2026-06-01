@@ -1,6 +1,6 @@
 {
   "name": "@olwiba/genesis-render",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "private": false,
   "type": "module",
   "sideEffects": false,
@@ -41,6 +41,7 @@
     "zod": ">=3.0.0"
   },
   "devDependencies": {
+    "@content-collections/mdx": "^0.2.2",
     "@olwiba/dx": "0.0.16",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-start": "^1.168.6",
