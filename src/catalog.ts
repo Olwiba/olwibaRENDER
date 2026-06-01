@@ -118,6 +118,42 @@ export const olwibaComponentDefinitions: Record<string, any> = {
     description: 'Fade-in animation wrapper',
     slots: ['default'],
   },
+  AppContent: {
+    props: z.object({
+      spacing: z.enum(['sm', 'md', 'lg']).optional(),
+      maxWidth: z.enum(['none', 'screen-lg', 'screen-xl', 'screen-2xl']).optional(),
+      className: z.string().optional(),
+    }),
+    description: 'App page content wrapper for content rendered inside AppShell.',
+    slots: ['default'],
+  },
+  AppGrid: {
+    props: z.object({
+      columns: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4)]).optional(),
+      gap: z.enum(['sm', 'md', 'lg']).optional(),
+      className: z.string().optional(),
+    }),
+    description: 'Responsive app content grid. Use for dashboard cards, settings panels, and billing cards.',
+    slots: ['default'],
+  },
+  AppGridCell: {
+    props: z.object({
+      span: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4), z.literal('full')]).optional(),
+      className: z.string().optional(),
+    }),
+    description: 'Optional app grid cell wrapper for cards that need custom column spans.',
+    slots: ['default'],
+  },
+  PublicPageFrame: {
+    props: z.object({
+      surface: z.enum(['default', 'muted']).optional(),
+      spacing: z.enum(['sm', 'md', 'lg']).optional(),
+      maxWidth: z.enum(['none', 'screen-xl', 'screen-2xl']).optional(),
+      className: z.string().optional(),
+    }),
+    description: 'Public page frame for marketing, content, blog, changelog, docs, and contact pages.',
+    slots: ['default'],
+  },
   Grid: {
     props: z.object({
       columns: z.union([
