@@ -1,6 +1,6 @@
 {
   "name": "@olwiba/genesis-render",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "private": false,
   "type": "module",
   "sideEffects": false,
@@ -33,7 +33,7 @@
     "@json-render/react": "^0.19.0",
     "@olwiba/cn": "0.1.18",
     "@olwiba/docs": "0.1.26",
-    "@olwiba/ui": "0.0.46"
+    "@olwiba/ui": "0.1.1"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
