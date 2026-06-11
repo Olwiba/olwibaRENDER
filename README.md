@@ -1,46 +1,46 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: light)" srcset="./public/genesis-render--light.gif" />
-    <source media="(prefers-color-scheme: dark)" srcset="./public/genesis-render.gif" />
-    <img src="./public/genesis-render.gif" alt="genesis-render" style="width: 100%;" />
+    <source media="(prefers-color-scheme: light)" srcset="./public/olwibaRENDER--light.gif" />
+    <source media="(prefers-color-scheme: dark)" srcset="./public/olwibaRENDER.gif" />
+    <img src="./public/olwibaRENDER.gif" alt="olwibaRENDER" style="width: 100%;" />
   </picture>
 </p>
 
 <p align="center">
-  <strong>JSON-to-UI rendering for Genesis projects.</strong>
+  <strong>JSON-to-UI rendering for Olwiba projects.</strong>
 </p>
 
 <p align="center">
-  <a href="https://renderer.genesis.olwiba.com">Documentation</a>
+  <a href="https://render.olwiba.com">Documentation</a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/Olwiba/genesis-render/issues/new?template=bug_report.md">🪲 Report a bug</a> ·
-  <a href="https://github.com/Olwiba/genesis-render/issues/new?template=feature_request.md">✨ Feature request</a>
+  <a href="https://github.com/Olwiba/olwibaRENDER/issues/new?template=bug_report.md">🪲 Report a bug</a> ·
+  <a href="https://github.com/Olwiba/olwibaRENDER/issues/new?template=feature_request.md">✨ Feature request</a>
 </p>
 
 <p align="center">
   <a href="https://github.com/sponsors/Olwiba"><img src="https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=22c55e" alt="Sponsor" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/Olwiba/genesis-render?label=license&logo=github" alt="License" /></a>
-  <a href="https://github.com/Olwiba/genesis-render/issues"><img src="https://img.shields.io/github/issues/Olwiba/genesis-render" alt="Issues" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/Olwiba/olwibaRENDER?label=license&logo=github" alt="License" /></a>
+  <a href="https://github.com/Olwiba/olwibaRENDER/issues"><img src="https://img.shields.io/github/issues/Olwiba/olwibaRENDER" alt="Issues" /></a>
 </p>
 
 ## What This Is
 
-`@olwiba/genesis-render` is the `@olwiba/ui` adapter for [`@json-render/react`](https://json-render.dev).
+`@olwiba/render` is the `@olwiba/ui` adapter for [`@json-render/react`](https://json-render.dev).
 
 It lets you describe UI declaratively as a JSON spec and renders it using the full Olwiba component library. Useful for AI-generated pages, dynamic dashboard layouts, or any surface where structure comes from data rather than code.
 
 ## Installation
 
 ```bash
-bun add @olwiba/genesis-render
+bun add @olwiba/render
 ```
 
 Peer dependencies: `@olwiba/cn`, `@olwiba/ui`, `react`, `react-dom`, `zod`
 
 ```tsx
-import { GenesisPage } from '@olwiba/genesis-render';
+import { RenderPage } from '@olwiba/render';
 
 const spec = {
   root: 'header-1',
@@ -60,7 +60,7 @@ const spec = {
 
 function DashboardPage() {
   return (
-    <GenesisPage
+    <RenderPage
       spec={spec}
       onAction={{ navigate: (p) => router.navigate(p.to) }}
     />
@@ -70,7 +70,7 @@ function DashboardPage() {
 
 ## What's Included
 
-**GenesisPage** Top-level renderer — pass a spec and action handlers, get a full page  
+**RenderPage** Top-level renderer — pass a spec and action handlers, get a full page  
 **defineRegistry** Cherry-pick specific components for a lean custom renderer  
 **catalog** Full component registry with Zod-validated prop schemas  
 **AI prompting** `catalog.prompt()` generates a system prompt describing all registered components  
@@ -79,7 +79,7 @@ function DashboardPage() {
 
 - [@olwiba/ui](https://github.com/Olwiba/olwibaUI) — the component library being rendered
 - [@olwiba/cn](https://github.com/Olwiba/olwibaCN) — base UI primitives
-- [genesis](https://github.com/Olwiba/genesis) — the baseline template
+- [@olwiba/sync](https://github.com/Olwiba/olwibaSYNC) — keep @olwiba/* deps up to date
 
 ## Contributing
 

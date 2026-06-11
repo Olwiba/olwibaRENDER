@@ -8,9 +8,9 @@ const navItems = [
 export function SiteHeader() {
   return (
     <DocsHeader
-      logo={<>g_<span className="text-primary">render</span></>}
+      logo={<>@olwiba/<span className="text-primary">render</span></>}
       navItems={navItems}
-      githubUrl="https://github.com/olwiba/genesis-render"
+      githubUrl="https://github.com/Olwiba/olwibaRENDER"
       githubBadge="soon"
     />
   );

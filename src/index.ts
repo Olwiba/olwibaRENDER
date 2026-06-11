@@ -1,5 +1,5 @@
-export { GenesisPage } from './genesis-page';
-export type { GenesisPageProps } from './genesis-page';
+export { RenderPage } from './render-page';
+export type { RenderPageProps } from './render-page';
 
 export { catalog, olwibaComponentDefinitions } from './catalog';
 export { registry, olwibaComponents } from './registry';

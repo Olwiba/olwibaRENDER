@@ -1,10 +1,10 @@
 {
-  "name": "@olwiba/genesis-render",
-  "version": "0.0.11",
+  "name": "@olwiba/render",
+  "version": "0.1.0",
   "private": false,
   "type": "module",
   "sideEffects": false,
-  "description": "olwibaUI adapter layer for @json-render — JSON-to-UI rendering for Genesis projects",
+  "description": "olwibaUI adapter layer for @json-render — JSON-to-UI rendering for Olwiba projects",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -72,11 +72,12 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Olwiba/genesis-render"
+    "url": "https://github.com/Olwiba/olwibaRENDER"
   },
   "author": "Olwiba",
   "license": "MIT"

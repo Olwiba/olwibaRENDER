@@ -3,14 +3,14 @@ title: Getting Started
 description: JSON-to-UI mapping engine for @olwiba/ui components
 ---
 
-## What is genesis-render?
+## What is @olwiba/render?
 
-A lightweight adapter layer that takes a JSON spec and renders it using `@olwiba/ui` components. Built on [`@json-render`](https://json-render.dev). Designed to power AI-generated pages in Genesis projects.
+A lightweight adapter layer that takes a JSON spec and renders it using `@olwiba/ui` components. Built on [`@json-render`](https://json-render.dev). Designed for AI-generated pages, dynamic layouts, and any surface where structure comes from data rather than code.
 
 ## Installation
 
 ```bash
-bun add @olwiba/genesis-render
+bun add @olwiba/render
 ```
 
 Peer dependencies:
@@ -22,7 +22,7 @@ bun add @olwiba/cn @olwiba/ui react react-dom zod
 ## Basic Usage
 
 ```tsx
-import { GenesisPage } from '@olwiba/genesis-render';
+import { RenderPage } from '@olwiba/render';
 
 const spec = {
   root: 'header-1',
@@ -42,7 +42,7 @@ const spec = {
 
 function MyPage() {
   return (
-    <GenesisPage
+    <RenderPage
       spec={spec}
       onAction={{ navigate: (params) => router.navigate(params.to) }}
     />
@@ -72,7 +72,7 @@ A spec is a flat element map with a root pointer:
 }
 ```
 
-## GenesisPage Props
+## RenderPage Props
 
 | Prop | Type | Description |
 |------|------|-------------|
@@ -84,8 +84,8 @@ A spec is a flat element map with a root pointer:
 ## Advanced: Custom Registry
 
 ```tsx
-import { defineCatalog, defineRegistry, Renderer, StateProvider } from '@olwiba/genesis-render';
-import { olwibaComponentDefinitions, olwibaComponents } from '@olwiba/genesis-render';
+import { defineCatalog, defineRegistry, Renderer, StateProvider } from '@olwiba/render';
+import { olwibaComponentDefinitions, olwibaComponents } from '@olwiba/render';
 
 const { registry } = defineRegistry(catalog, {
   components: {
@@ -101,7 +101,7 @@ const { registry } = defineRegistry(catalog, {
 ## Advanced: AI Prompt Generation
 
 ```tsx
-import { catalog } from '@olwiba/genesis-render';
+import { catalog } from '@olwiba/render';
 
 // Generates a system prompt describing all registered components,
 // their Zod-validated prop schemas, and descriptions.

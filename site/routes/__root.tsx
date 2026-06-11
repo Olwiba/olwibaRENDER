@@ -7,9 +7,9 @@ import appCss from '~/styles/app.css?url';
 
 export const Route = createDocsRoot({
   meta: {
-    title: '@olwiba/genesis-render - JSON-to-UI Renderer',
+    title: '@olwiba/render - JSON-to-UI Renderer',
     description: 'Lightweight JSON-to-UI mapping engine. Define pages as block specs, render them as @olwiba/ui components.',
-    ogImage: 'https://renderer.genesis.olwiba.com/og-image.png',
+    ogImage: 'https://render.olwiba.com/og-image.png',
   },
   favicons: [
     { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon/favicon-16.png' },

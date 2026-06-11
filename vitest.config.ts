@@ -8,7 +8,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@olwiba/genesis-render': resolve('./src/index.ts'),
+      '@olwiba/render': resolve('./src/index.ts'),
       '@': resolve('./src'),
     },
   },
