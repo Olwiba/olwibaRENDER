@@ -2,6 +2,16 @@
 
 
 
+
+## 0.1.5
+
+### Changed
+
+- **Breaking:** `@olwiba/render/pro` no longer exports `proCatalog`, `proRegistry`, `proComponentDefinitions`, or `proComponents`. Those were empty stubs with no Pro components bundled.
+- Replaced with `createProRegistry(proComponentDefs, proComps)` — a helper that merges the base olwibaUI registry with your Pro components from `@olwiba/ui-pro`. Pro component definitions stay entirely in `@olwiba/ui-pro`; nothing Pro-specific ships in this package.
+
+### Migration
+
 ## 0.1.4
 
 No user-facing changes.
