@@ -1,5 +1,16 @@
 # Changelog
 
+
+## 0.1.3
+
+### Added
+
+- New `./pro` subpath export (`@olwiba/render/pro`) with `proCatalog`, `proRegistry`, and `proComponentDefinitions` — wired for `@olwiba/ui-pro` components (optional peer dependency `>=0.1.0`).
+
+### Changed
+
+- `@olwiba/ui-pro` added as optional peer dependency.
+
 ## 0.1.2
 
 ### Changed
