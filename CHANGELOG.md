@@ -3,6 +3,13 @@
 
 
 
+
+## 0.1.6
+
+### Fixed
+
+- **CI:** Replaced `workspace:*` protocol references in `package.json` with pinned npm versions (`@olwiba/cn`, `@olwiba/docs`, `@olwiba/ui`, `@olwiba/dx`). `bun --frozen-lockfile` was rejecting workspace refs during CI install outside the monorepo workspace tree.
+
 ## 0.1.5
 
 ### Changed
