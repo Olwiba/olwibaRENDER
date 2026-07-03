@@ -5,12 +5,12 @@ import tsConfigPaths from 'vite-tsconfig-paths';
 import tailwindcss from '@tailwindcss/vite';
 import mdx from 'fumadocs-mdx/vite';
 import { resolve } from 'path';
-import { createDevBannerPlugin } from '@olwiba/dx';
+import { createDevBannerPlugin, resolveDevPort } from '@olwiba/dx';
 import { projectBanner } from './site/project.config';
 
 export default defineConfig({
   server: {
-    port: 3003,
+    port: await resolveDevPort(3003),
   },
   resolve: {
     alias: {
