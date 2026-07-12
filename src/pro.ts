@@ -7,12 +7,12 @@ import { olwibaComponents } from './registry';
 
 /**
  * Merge base olwibaUI components with Pro components into a single registry.
- * Call this only if you have @olwiba/ui-pro installed — import your Pro
- * component definitions and wrappers from there, then pass them here.
+ * Call this only if you have @olwiba/ui-pro installed — define catalog entries
+ * and wrappers for the Pro components you use, then pass them here.
  *
  * @example
  * import { createProRegistry } from '@olwiba/render/pro'
- * import { proComponentDefinitions, proComponents } from '@olwiba/ui-pro'
+ * import { proComponentDefinitions, proComponents } from './pro-catalog'
  * const registry = createProRegistry(proComponentDefinitions, proComponents)
  * <RenderPage spec={spec} registry={registry} />
  */
