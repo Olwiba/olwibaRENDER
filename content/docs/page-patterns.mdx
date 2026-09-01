@@ -1,0 +1,143 @@
+---
+title: Page Patterns
+description: Render the seven UI Pro Page Patterns from validated, versioned JSON
+---
+
+Page Pattern definitions are an optional JSON authoring path into the same components exported by
+`@olwiba/ui-pro`. JSX and JSON share one visual system; the renderer does not recreate pattern
+layout or responsive behaviour.
+
+## When to use JSON
+
+Use a definition for substantially declarative settings, collection, dashboard, detail, and content
+pages. Prefer JSX for editors, maps, realtime collaboration, drag-and-drop, and interaction-heavy
+workflows.
+
+Application code still owns data fetching, permissions, validation, mutations, and registered action
+handlers. JSON chooses sanctioned structure and references capabilities; it never contains executable
+code.
+
+For ordinary signed-in JSON pages, choose one Page Pattern root. Do not rebuild page padding, page
+headings, navigation geometry, or responsive behaviour from blocks beneath it.
+
+## Complete example
+
+Inject the canonical UI Pro implementations once in application code:
+
+```tsx
+import {
+  CollectionPage,
+  ContentPage,
+  DashboardPage,
+  DetailPage,
+  FlowPage,
+  FocusPage,
+  SettingsPage,
+} from '@olwiba/ui-pro';
+import { createPagePatternRenderer } from '@olwiba/render/pro';
+
+export const RenderPatternPage = createPagePatternRenderer({
+  CollectionPage,
+  ContentPage,
+  DashboardPage,
+  DetailPage,
+  FlowPage,
+  FocusPage,
+  SettingsPage,
+});
+```
+
+Then provide a versioned definition. Each semantic slot points at one root in the shared flat element
+map:
+
+```json
+{
+  "schemaVersion": 1,
+  "pattern": "SettingsPage",
+  "props": {
+    "title": "Workspace settings",
+    "description": "Manage this workspace."
+  },
+  "slots": {
+    "navigation": "settings-navigation",
+    "content": "profile-section"
+  },
+  "elements": {
+    "settings-navigation": {
+      "type": "Section",
+      "props": { "title": "General", "padding": "none" },
+      "children": []
+    },
+    "profile-section": {
+      "type": "Section",
+      "props": {
+        "title": "Profile",
+        "description": "How this workspace is presented.",
+        "padding": "none"
+      },
+      "children": []
+    }
+  }
+}
+```
+
+```tsx
+<RenderPatternPage
+  definition={settingsDefinition}
+  registry={productRegistry}
+  initialState={{ workspace: data }}
+  onAction={{ 'workspace.update': updateWorkspace }}
+/>
+```
+
+Use `createProRegistry` when the element map also needs product or Pro blocks. Every component type
+must exist in the supplied registry.
+
+## Pattern slots
+
+| Pattern | Required | Optional |
+|---|---|---|
+| `ContentPage` | `content` | `actions` |
+| `SettingsPage` | `content` | `navigation`, `actions`, `footer` |
+| `CollectionPage` | `content` | `toolbar`, `actions`, `footer` |
+| `DetailPage` | `content` | `navigation`, `status`, `actions`, `metadata` |
+| `DashboardPage` | `content` | `summary`, `actions` |
+| `FocusPage` | `content` | `actions`, `footer` |
+| `FlowPage` | `content` | `progress`, `actions`, `aside` |
+
+`FlowPage.aside` is valid only with `props.layout: "split"`. Common serializable props are `title`,
+`description`, and `eyebrow`; Flow also accepts `layout`. Icons remain application-owned until the
+ecosystem has one registered-icon contract.
+
+## Validation and versioning
+
+Definitions fail before rendering when they contain an unknown version, pattern, pattern prop, slot,
+component type, missing root, or missing child reference. Version 1 intentionally rejects
+`className`, React nodes, functions, and arbitrary DOM props at the pattern boundary.
+
+All slot roots render beneath one state, action, and visibility provider. A toolbar action can update
+content state without separate stores or registration effects.
+
+## API reference
+
+### `createPagePatternRenderer(components)`
+
+Creates a renderer after all seven canonical UI Pro components are injected. Missing implementations
+throw immediately. The returned component accepts:
+
+| Prop | Type | Description |
+|---|---|---|
+| `definition` | `unknown` | Definition validated as schema version 1 |
+| `registry` | `ComponentRegistry` | Base, Pro, and product block registry |
+| `initialState` | `Record<string, unknown>` | Shared initial state for every slot |
+| `onAction` | `Record<string, handler>` | Secure application-owned action handlers |
+
+### `parsePagePatternDefinition(input, registry?)`
+
+Parses the structural schema and, when a registry is supplied, rejects unknown element component
+types. Returns the inferred `PagePatternDefinition` type or throws `PagePatternDefinitionError`.
+
+### `pagePatternDefinitionSchema`
+
+The strict Zod schema for schema version 1. Use it when integrating with storage, APIs, or AI output
+validation before rendering.

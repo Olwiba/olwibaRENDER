@@ -5,6 +5,20 @@ import { defineRegistry } from '@json-render/react';
 import { olwibaComponentDefinitions } from './catalog';
 import { olwibaComponents } from './registry';
 
+export {
+  PAGE_PATTERN_NAMES,
+  PagePatternDefinitionError,
+  createPagePatternRenderer,
+  pagePatternDefinitionSchema,
+  parsePagePatternDefinition,
+} from './page-patterns';
+export type {
+  PagePatternComponents,
+  PagePatternDefinition,
+  PagePatternName,
+  PagePatternRendererProps,
+} from './page-patterns';
+
 /**
  * Merge base olwibaUI components with Pro components into a single registry.
  * Call this only if you have @olwiba/ui-pro installed — define catalog entries
