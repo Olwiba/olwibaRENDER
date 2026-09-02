@@ -4,6 +4,26 @@
 
 
 
+
+## 0.1.7
+
+### Added
+
+- Add JSON page pattern adapters
+
+### Changed
+
+- Report package releases to OPS_WEBHOOK_RELEASES
+- Rename DISCORD_WEBHOOK_URL to OPS_WEBHOOK_DEPLOYS
+- Fix createProRegistry example to not import nonexistent ui-pro exports
+- Gate installs behind 7-day minimum release age
+- Bump @olwiba/docs to 0.1.31; regenerate standalone bun.lock
+- Resolve dev port via @olwiba/dx resolveDevPort
+
+### Fixed
+
+- Authenticate GitHub Packages publish
+
 ## 0.1.6
 
 ### Fixed
