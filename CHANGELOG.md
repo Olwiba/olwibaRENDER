@@ -5,6 +5,20 @@
 
 
 
+
+## 0.1.8
+
+### Added
+
+- `createOlwibaComponents({ resolveIcon })` — the supported way to turn a JSON `icon: "Bell"` string into a React component. A JSON spec can only carry strings, so previously a consumer wanting icons had to replace the whole `FeatureCard` registry entry, re-deriving whatever this package does with it and silently diverging when that changed.
+- `IconResolver` type export: `(name: string) => React.ComponentType<{ className?: string }> | undefined`.
+
+### Changed
+
+- Icon resolution applies to every catalog component whose `icon` prop arrived as a string, not `FeatureCard` alone — several components take an icon, and special-casing one is how the next one gets replaced wholesale.
+- An unresolved icon name drops the prop instead of passing the string through, so the component's own default icon applies rather than React rendering a tag literally called `Bell`. Returning `undefined` from `resolveIcon` is a normal answer — content is where typos live.
+- `olwibaComponents` is unchanged and still exported; existing usage is unaffected.
+
 ## 0.1.7
 
 ### Added
