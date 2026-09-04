@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { defineRegistry } from '@json-render/react';
 import type { BaseComponentProps } from '@json-render/react';
 import {
@@ -53,3 +54,56 @@ export const { registry } = defineRegistry(catalog, {
     navigate: () => {},
   },
 });
+
+/**
+ * Turns a JSON icon name into a component.
+ *
+ * JSON specs can only carry strings, so `icon: "Bell"` has to become a React
+ * component somewhere. Returning undefined is a normal answer for a name the
+ * consumer does not publish — the component falls back to its own default
+ * rather than rendering nothing or throwing on a typo in content.
+ */
+export type IconResolver = (name: string) => React.ComponentType<{ className?: string }> | undefined;
+
+/**
+ * Applies an icon resolver to any component whose `icon` prop arrived as a
+ * string.
+ *
+ * Applied across the whole set rather than to FeatureCard alone: several
+ * catalog components take an icon, and special-casing one is how the next one
+ * ends up replaced wholesale by a consumer.
+ */
+function withIconResolution(
+  components: Record<string, (args: BaseComponentProps) => React.ReactNode>,
+  resolveIcon: IconResolver,
+) {
+  return Object.fromEntries(
+    Object.entries(components).map(([name, Component]) => [
+      name,
+      (args: BaseComponentProps) => {
+        const props = args.props as { icon?: unknown } | undefined;
+        if (!props || typeof props.icon !== 'string') return Component(args);
+        const Icon = resolveIcon(props.icon);
+        // Drop an unresolved name entirely so the component's own default
+        // icon applies; passing the raw string through would try to render a
+        // tag literally called "Bell".
+        const { icon: _icon, ...rest } = props;
+        return Component({ ...args, props: Icon ? { ...rest, icon: Icon } : rest });
+      },
+    ]),
+  );
+}
+
+/**
+ * The component set, optionally with icon-name resolution.
+ *
+ * The supported extension point for JSON-driven icons. Before it, a consumer
+ * wanting `icon: "Bell"` had to replace the whole FeatureCard registry entry,
+ * which meant re-deriving whatever this package does with it and silently
+ * diverging the day that changed.
+ */
+export function createOlwibaComponents(options?: { resolveIcon?: IconResolver }) {
+  return options?.resolveIcon
+    ? withIconResolution(olwibaComponents, options.resolveIcon)
+    : olwibaComponents;
+}
