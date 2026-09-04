@@ -1,6 +1,6 @@
 {
   "name": "@olwiba/render",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "private": false,
   "type": "module",
   "sideEffects": false,
@@ -35,9 +35,9 @@
   "dependencies": {
     "@json-render/core": "^0.19.0",
     "@json-render/react": "^0.19.0",
-    "@olwiba/cn": "0.1.36",
-    "@olwiba/docs": "0.1.40",
-    "@olwiba/ui": "0.2.24"
+    "@olwiba/cn": "0.1.37",
+    "@olwiba/docs": "0.1.41",
+    "@olwiba/ui": "0.2.25"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
