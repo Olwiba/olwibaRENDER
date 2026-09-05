@@ -22,6 +22,20 @@ const sidebarSections: SidebarSection[] = [
   { name: 'Blocks', href: '/docs/blocks' },
 ];
 
+/**
+ * What fumadocs-mdx actually attaches to a page, which the generic `PageData`
+ * from fumadocs-core does not describe — `source.getPage()` is not
+ * parameterised with the MDX collection's type, so the augmented fields are
+ * invisible to TypeScript. Narrowed explicitly rather than left to `any`, so
+ * a change in what the loader reads is still a type error.
+ */
+type FumadocsPageData = {
+  title: string;
+  description?: string;
+  toc?: Array<{ title?: React.ReactNode; url: string; depth: number }>;
+  getText: (mode: 'raw' | 'processed') => Promise<string>;
+};
+
 export const Route = createFileRoute('/docs/$')({
   component: Page,
   loader: async ({ params }) => {
@@ -42,17 +56,18 @@ const serverLoader = createServerFn({
 
     const pageTree = source.getPageTree();
     const neighbours = findNeighbour(pageTree, page.url);
-    const rawContent = await page.data.getText('raw');
+    const pageData = page.data as unknown as FumadocsPageData;
+    const rawContent = await pageData.getText('raw');
 
     return {
       path: page.path,
       url: page.url,
       pageTree: await source.serializePageTree(pageTree),
       frontmatter: {
-        title: page.data.title,
-        description: page.data.description,
+        title: pageData.title,
+        description: pageData.description,
       },
-      toc: (page.data.toc ?? []).map((item: { title?: React.ReactNode; url: string; depth: number }) => ({
+      toc: (pageData.toc ?? []).map((item: { title?: React.ReactNode; url: string; depth: number }) => ({
         title: extractTextFromReactNode(item.title),
         url: item.url,
         depth: item.depth,

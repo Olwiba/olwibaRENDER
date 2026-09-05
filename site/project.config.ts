@@ -20,7 +20,7 @@ export const projectConfig = {
     darkOklch: "oklch(0.714 0.203 303.9)",
   },
   theme: {
-    initialDocsTheme: "violet",
+    initialDocsTheme: "purple",
   },
 } as const satisfies ProjectThemeConfig
 

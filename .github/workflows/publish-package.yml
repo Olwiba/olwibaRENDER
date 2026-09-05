@@ -54,6 +54,13 @@ jobs:
       - name: Install
         run: bun install --frozen-lockfile
 
+      # Covers site/ as well as src/. Without it the docs site drifted
+      # untracked: an undeclared @tanstack/react-router dependency that only
+      # resolved by hoisting, a theme name that is not in the allowed set, and
+      # fumadocs API changes — none of which install, test or build notice.
+      - name: Typecheck
+        run: bun run types:check
+
       - name: Test
         run: bun run test
 
