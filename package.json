@@ -1,10 +1,10 @@
 {
   "name": "@olwiba/render",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "private": false,
   "type": "module",
   "sideEffects": false,
-  "description": "olwibaUI adapter layer for @json-render \u2014 JSON-to-UI rendering for Olwiba projects",
+  "description": "olwibaUI adapter layer for @json-render — JSON-to-UI rendering for Olwiba projects",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",

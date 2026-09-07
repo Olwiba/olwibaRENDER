@@ -9,6 +9,20 @@
 
 
 
+
+## 0.1.12
+
+No changes to the package's runtime code or public API — this release repairs the typecheck gate added in 0.1.11.
+
+### Fixed
+
+- `types:check` now runs `tsr generate` before `tsc --noEmit`. `site/routeTree.gen.ts` is generated and gitignored, so it exists on any machine that has built the site and never in a clean checkout: the gate passed locally and failed on its first real CI run, with every route type resolving to `undefined` and five errors falling out of one missing file. Verified from a state with the generated file deleted, running typecheck, tests and build.
+- Added `tsr.config.json` so `tsr generate` finds the routes at all — they live in `site/routes`, not the default `src/routes`, and the generated tree belongs beside them.
+
+### Changed
+
+- `@tanstack/router-cli` is now a devDependency, pinned to 1.167.19, and `routes:generate` is exposed as its own script for regenerating the tree without a full typecheck.
+
 ## 0.1.11
 
 No changes to the package's runtime code or public API — this release is CI and docs-site maintenance.
