@@ -8,6 +8,23 @@
 
 
 
+
+## 0.1.11
+
+No changes to the package's runtime code or public API — this release is CI and docs-site maintenance.
+
+### Changed
+
+- Bumped `@olwiba/docs` to 0.1.43. It is only consumed by the docs site under `site/`, but it sits in `dependencies`, so it does land in a consumer's tree.
+- CI now runs `types:check`. That script has always covered `site/` alongside `src/`, but the workflow only ran install, test and build, so the docs site drifted with nothing watching it. Adding the gate is the change; the three fixes below are what it caught on its first run.
+- Release workflow moved to `actions/checkout` v7, `actions/setup-node` v5 and `dorny/paths-filter` v4. The previous pins all targeted Node 20, which runners now force onto Node 24 with a warning and will eventually refuse to run.
+
+### Fixed
+
+- **Docs site:** `@tanstack/react-router` was imported across five files without being declared anywhere, resolving only because another package hoisted it — which made the site build hostage to an unrelated dependency's tree. It is now a direct devDependency.
+- **Docs site:** `initialDocsTheme` was `"violet"`, which is not one of the seven themes `@olwiba/docs` accepts, so the site had never rendered the theme it asked for and was silently falling back. Changed to `purple`, the nearest real one.
+- **Docs site:** `page.data.getText` and `.toc` are attached by fumadocs-mdx, but `source.getPage()` is typed with fumadocs-core's generic `PageData`, leaving neither visible to TypeScript. Narrowed through an explicit local type rather than `any`.
+
 ## 0.1.10
 
 No user-facing changes.
