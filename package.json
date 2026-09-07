@@ -4,7 +4,7 @@
   "private": false,
   "type": "module",
   "sideEffects": false,
-  "description": "olwibaUI adapter layer for @json-render — JSON-to-UI rendering for Olwiba projects",
+  "description": "olwibaUI adapter layer for @json-render \u2014 JSON-to-UI rendering for Olwiba projects",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -30,7 +30,8 @@
     "start": "bun run server.ts",
     "test": "vitest run",
     "test:watch": "vitest",
-    "types:check": "fumadocs-mdx && tsc --noEmit"
+    "types:check": "fumadocs-mdx && tsr generate && tsc --noEmit",
+    "routes:generate": "tsr generate"
   },
   "dependencies": {
     "@json-render/core": "^0.19.0",
@@ -79,7 +80,8 @@
     "vite": "^7.3.1",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.0.0",
-    "zod": "^3.24.3"
+    "zod": "^3.24.3",
+    "@tanstack/router-cli": "1.167.19"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
