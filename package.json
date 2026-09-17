@@ -23,8 +23,8 @@
     "src"
   ],
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
+    "build": "dx dep-check && tsup",
+    "dev": "dx dep-check && tsup --watch",
     "web:build": "fumadocs-mdx && vite build",
     "web:dev": "fumadocs-mdx && vite dev",
     "start": "bun run server.ts",
@@ -53,7 +53,7 @@
   },
   "devDependencies": {
     "@content-collections/mdx": "^0.2.2",
-    "@olwiba/dx": "0.0.23",
+    "@olwiba/dx": "0.0.36",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-router": "^1.170.16",
     "@tanstack/react-start": "^1.168.6",
