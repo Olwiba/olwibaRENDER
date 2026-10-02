@@ -9,7 +9,7 @@
         "@json-render/react": "^0.19.0",
         "@olwiba/cn": "0.1.64",
         "@olwiba/docs": "0.1.53",
-        "@olwiba/ui": "0.2.51",
+        "@olwiba/ui": "0.2.52",
       },
       "devDependencies": {
         "@content-collections/mdx": "^0.2.2",
@@ -255,7 +255,7 @@
 
     "@olwiba/dx": ["@olwiba/dx@0.0.40", "", { "peerDependencies": { "@typescript-eslint/eslint-plugin": ">=8.0.0", "@typescript-eslint/parser": ">=8.0.0", "eslint": ">=9.0.0", "eslint-plugin-react-hooks": ">=5.0.0", "lucide-static": ">=0.400.0", "puppeteer-core": ">=25.9.0", "sharp": ">=0.35.0" }, "optionalPeers": ["@typescript-eslint/eslint-plugin", "@typescript-eslint/parser", "eslint-plugin-react-hooks", "lucide-static", "puppeteer-core", "sharp"], "bin": { "dx": "dist/cli.js" } }, "sha512-MJF37T3OFbY+6w21TE5fwBYXt3wvRrNwXTzHURM6AADiUtnNnrCQf2V2b3f6QQMyhYqfBsTnj8kKuY3garV6bA=="],
 
-    "@olwiba/ui": ["@olwiba/ui@0.2.51", "", { "dependencies": { "@dnd-kit/core": "^6.3.1", "@dnd-kit/modifiers": "^9.0.0", "@dnd-kit/sortable": "^10.0.0", "@dnd-kit/utilities": "^3.2.2", "@tanstack/react-table": "^8.21.3", "clsx": "^2.1.1", "lucide-react": "^0.562.0", "recharts": "^3.8.0", "sonner": "^2.0.7", "tailwind-merge": "^3.4.0", "zod": "^4.3.6" }, "peerDependencies": { "@content-collections/mdx": ">=0.2.0", "@olwiba/cn": ">=0.1.16", "react": ">=18.0.0", "react-dom": ">=18.0.0" }, "optionalPeers": ["@content-collections/mdx"] }, "sha512-D1Un5LWG0sU0bT2Wk41zATYiI9zYQnqLmmu1kwXiJ2xeSVjVkJa+boNqUveDQLTe1txgzZHQU7Ta7S6tnSsWwQ=="],
+    "@olwiba/ui": ["@olwiba/ui@0.2.52", "", { "dependencies": { "@dnd-kit/core": "^6.3.1", "@dnd-kit/modifiers": "^9.0.0", "@dnd-kit/sortable": "^10.0.0", "@dnd-kit/utilities": "^3.2.2", "@tanstack/react-table": "^8.21.3", "clsx": "^2.1.1", "lucide-react": "^0.562.0", "recharts": "^3.8.0", "sonner": "^2.0.7", "tailwind-merge": "^3.4.0", "zod": "^4.3.6" }, "peerDependencies": { "@content-collections/mdx": ">=0.2.0", "@olwiba/cn": ">=0.1.16", "react": ">=18.0.0", "react-dom": ">=18.0.0" }, "optionalPeers": ["@content-collections/mdx"] }, "sha512-m9k2NbCyjUtAzP9H9Ahp4o5pQNW9CYABW5DzuQNUWrob7P/OE/LpBzfPpaKdrGQr2x5dEcLscro7SeXUAPc+UQ=="],
 
     "@oozcitak/dom": ["@oozcitak/dom@2.0.2", "", { "dependencies": { "@oozcitak/infra": "^2.0.2", "@oozcitak/url": "^3.0.0", "@oozcitak/util": "^10.0.0" } }, "sha512-GjpKhkSYC3Mj4+lfwEyI1dqnsKTgwGy48ytZEhm4A/xnH/8z9M3ZVXKr/YGQi3uCLs1AEBS+x5T2JPiueEDW8w=="],
 
