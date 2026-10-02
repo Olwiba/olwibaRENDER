@@ -10,6 +10,13 @@
 
 
 
+
+## 0.1.13
+
+### Changed
+
+- Gate dev and build on dx dep-check
+
 ## 0.1.12
 
 No changes to the package's runtime code or public API — this release repairs the typecheck gate added in 0.1.11.
